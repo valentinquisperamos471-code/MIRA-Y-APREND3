@@ -6,17 +6,19 @@
 
 <title>🎬 Mira y Aprende | Cine Reciclable</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#000;
+background:#050505;
 color:white;
 overflow-x:hidden;
 }
@@ -29,24 +31,27 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:black;
+background:#000;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:99999;
+z-index:999999;
 animation:hideLoader 4s forwards;
 }
 
 #loader h1{
 font-size:4rem;
 color:#22c55e;
-text-shadow:0 0 20px #22c55e;
+text-shadow:
+0 0 20px #22c55e,
+0 0 50px #22c55e;
 }
 
 #loader p{
 margin-top:20px;
-font-size:1.2rem;
+font-size:1.1rem;
+color:#ccc;
 }
 
 @keyframes hideLoader{
@@ -58,40 +63,73 @@ visibility:hidden;
 }
 }
 
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top,#14532d 0%,transparent 35%),
+radial-gradient(circle at bottom,#0f172a 0%,transparent 40%);
+z-index:-2;
+}
+
+.particles{
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(#22c55e 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.08;
+z-index:-1;
+animation:move 25s linear infinite;
+}
+
+@keyframes move{
+from{transform:translateY(0);}
+to{transform:translateY(-100px);}
+}
+
 /* HEADER */
 
 header{
-position:sticky;
+position:fixed;
 top:0;
-background:#000000e6;
-backdrop-filter:blur(10px);
-padding:15px 20px;
+left:0;
+width:100%;
+padding:18px 25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(10px);
 z-index:999;
-border-bottom:1px solid #222;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
 font-size:2rem;
-font-weight:bold;
+font-weight:800;
 color:#22c55e;
+text-shadow:0 0 15px #22c55e;
 }
 
 .user-box{
 display:flex;
-gap:10px;
-flex-wrap:wrap;
+gap:12px;
 }
 
 input,
 select{
-padding:12px;
+padding:13px;
 border:none;
-border-radius:12px;
-font-weight:bold;
+outline:none;
+border-radius:14px;
+background:#111827;
+color:white;
+font-weight:600;
 }
 
 /* HERO */
@@ -105,219 +143,309 @@ text-align:center;
 padding:20px;
 background:
 linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
-url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1400");
+url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1600");
 background-size:cover;
 background-position:center;
 }
 
-.hero-content h1{
-font-size:4rem;
+.hero-content{
+max-width:850px;
+}
+
+.hero h1{
+font-size:5rem;
+font-weight:800;
+line-height:1.1;
 text-shadow:
-0 0 10px #22c55e,
 0 0 20px #22c55e,
 0 0 40px #22c55e;
 }
 
-.hero-content p{
+.hero p{
 margin-top:20px;
 font-size:1.3rem;
+color:#d4d4d4;
 }
 
-.main-btn{
-margin-top:30px;
+.hero-buttons{
+margin-top:35px;
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.hero button{
 padding:18px 35px;
 border:none;
-border-radius:15px;
-background:#16a34a;
-color:white;
+border-radius:18px;
 font-size:1rem;
-font-weight:bold;
+font-weight:700;
 cursor:pointer;
+transition:.3s;
 }
 
-.main-btn:hover{
-transform:scale(1.05);
+.primary-btn{
+background:#22c55e;
+color:white;
+box-shadow:0 0 20px #22c55e55;
+}
+
+.secondary-btn{
+background:#111827;
+color:white;
+}
+
+.hero button:hover{
+transform:translateY(-5px) scale(1.03);
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+padding:70px 20px;
+max-width:1300px;
+margin:auto;
+}
+
+.card{
+background:rgba(17,24,39,.75);
+border:1px solid rgba(255,255,255,.06);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:28px;
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,.3);
+}
+
+.card h2{
+font-size:2.7rem;
+color:#22c55e;
+margin-bottom:10px;
+}
+
+.card p{
+color:#bbb;
 }
 
 /* TIMER */
 
-.timer-section{
-padding:40px 20px;
+.timer{
 text-align:center;
-background:#111;
+padding:30px 20px;
+}
+
+.timer h2{
+font-size:2rem;
+margin-bottom:15px;
 }
 
 #liveTimer{
-font-size:3rem;
-margin-top:15px;
+font-size:4rem;
+font-weight:800;
 color:#22c55e;
-font-weight:bold;
-}
-
-/* PANELS */
-
-.side-panels{
-display:flex;
-gap:20px;
-padding:30px 20px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.panel{
-background:#111;
-padding:20px;
-border-radius:20px;
-width:300px;
-}
-
-.panel h3{
-color:#22c55e;
-margin-bottom:15px;
+text-shadow:0 0 20px #22c55e;
 }
 
 /* MOVIES */
 
 .movies{
-padding:60px 20px;
+padding:80px 20px;
+max-width:1400px;
+margin:auto;
 }
 
-.movies h2{
+.section-title{
 text-align:center;
-margin-bottom:40px;
-font-size:2.5rem;
+font-size:3rem;
+margin-bottom:50px;
+font-weight:800;
 }
 
 .movie-grid{
 display:grid;
 grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
 }
 
 .movie{
-background:#111;
-border-radius:20px;
+background:#0f172a;
+border-radius:30px;
 overflow:hidden;
+transition:.4s;
+border:1px solid rgba(255,255,255,.06);
+}
+
+.movie:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px rgba(34,197,94,.2);
 }
 
 .movie img{
 width:100%;
-height:350px;
+height:420px;
 object-fit:cover;
 }
 
 .movie-content{
-padding:20px;
+padding:25px;
+}
+
+.tag{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+background:#14532d;
+font-size:.8rem;
+font-weight:700;
+margin-bottom:15px;
 }
 
 .movie-content h3{
-margin:10px 0;
+font-size:1.8rem;
+margin-bottom:12px;
 }
 
 .movie-content p{
-color:#aaa;
+color:#bbb;
+line-height:1.6;
 }
 
 .movie-content button{
-margin-top:15px;
+margin-top:20px;
 width:100%;
-padding:14px;
+padding:16px;
 border:none;
-border-radius:12px;
-background:#16a34a;
+border-radius:18px;
+background:#22c55e;
 color:white;
-font-weight:bold;
+font-weight:700;
+font-size:1rem;
 cursor:pointer;
+transition:.3s;
+}
+
+.movie-content button:hover{
+transform:scale(1.03);
 }
 
 /* COMBOS */
 
 .combos{
-padding:60px 20px;
-}
-
-.combos h2{
-text-align:center;
-margin-bottom:35px;
-font-size:2.5rem;
+padding:80px 20px;
+max-width:1300px;
+margin:auto;
 }
 
 .combo-grid{
 display:grid;
 grid-template-columns:
-repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
 .combo{
-background:#111;
-padding:20px;
-border-radius:20px;
+background:#111827;
+padding:30px;
+border-radius:28px;
 text-align:center;
+transition:.3s;
+}
+
+.combo:hover{
+transform:translateY(-8px);
 }
 
 .combo img{
-width:90px;
-margin-bottom:15px;
+width:100px;
+margin-bottom:20px;
+}
+
+.combo h3{
+font-size:1.4rem;
+margin-bottom:10px;
+}
+
+.combo p{
+font-size:1.3rem;
+font-weight:700;
+color:#22c55e;
 }
 
 /* RESERVE */
 
 .reserve{
-padding:60px 20px;
+padding:80px 20px;
+max-width:1200px;
+margin:auto;
 }
 
 .reserve-box{
-background:#111;
-padding:25px;
-border-radius:20px;
+background:#111827;
+padding:30px;
+border-radius:30px;
 }
 
 .time-btn,
 .reserve-btn{
-padding:14px 20px;
+padding:15px 25px;
 border:none;
-border-radius:12px;
-background:#16a34a;
+border-radius:16px;
+background:#22c55e;
 color:white;
-font-weight:bold;
+font-weight:700;
 cursor:pointer;
 margin:10px 5px;
+transition:.3s;
+}
+
+.time-btn:hover,
+.reserve-btn:hover{
+transform:scale(1.05);
 }
 
 .screen{
 background:white;
 color:black;
-padding:12px;
-border-radius:10px;
+padding:15px;
+border-radius:14px;
 text-align:center;
-font-weight:bold;
-margin:20px 0;
+font-weight:700;
+margin:25px 0;
 }
 
 .seats{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:10px;
+gap:15px;
 }
 
 .seat{
-height:70px;
+height:75px;
 border:none;
-border-radius:12px;
-background:#3f3f46;
+border-radius:18px;
+background:#374151;
 color:white;
-font-weight:bold;
+font-weight:700;
 cursor:pointer;
+transition:.3s;
+}
+
+.seat:hover{
+transform:scale(1.05);
 }
 
 .selected{
-background:#16a34a;
+background:#22c55e;
 }
 
 .occupied{
-background:red;
+background:#ef4444;
 cursor:not-allowed;
 }
 
@@ -326,9 +454,43 @@ cursor:not-allowed;
 .ticket{
 background:white;
 color:black;
-padding:25px;
-border-radius:20px;
-margin-top:25px;
+padding:30px;
+border-radius:25px;
+margin-top:30px;
+}
+
+.ticket img{
+margin-top:20px;
+}
+
+/* FLOATING */
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:95px;
+background:#22c55e;
+padding:16px 22px;
+border-radius:18px;
+color:white;
+text-decoration:none;
+font-weight:700;
+z-index:999;
+box-shadow:0 0 20px #22c55e55;
+}
+
+#adminBtn{
+position:fixed;
+right:20px;
+bottom:20px;
+padding:16px 22px;
+border:none;
+border-radius:18px;
+background:#111827;
+color:white;
+font-weight:700;
+cursor:pointer;
+z-index:999;
 }
 
 /* SUCCESS */
@@ -338,65 +500,37 @@ position:fixed;
 top:20px;
 left:50%;
 transform:translateX(-50%);
-background:#16a34a;
-padding:15px 25px;
-border-radius:15px;
-font-weight:bold;
+background:#22c55e;
+padding:16px 25px;
+border-radius:18px;
+font-weight:700;
 z-index:9999;
+animation:fade 3s forwards;
 }
 
-/* WHATSAPP */
-
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:90px;
-background:#16a34a;
-padding:14px 18px;
-border-radius:15px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-z-index:999;
+@keyframes fade{
+0%{opacity:1;}
+100%{opacity:0;}
 }
 
-/* ADMIN */
-
-#adminBtn{
-position:fixed;
-right:20px;
-bottom:20px;
-padding:14px 18px;
-border:none;
-border-radius:15px;
-background:#16a34a;
-color:white;
-font-weight:bold;
-cursor:pointer;
-z-index:999;
-}
-
-/* RESPONSIVE */
+/* MOBILE */
 
 @media(max-width:800px){
 
-.hero-content h1{
-font-size:2.5rem;
+.hero h1{
+font-size:2.8rem;
 }
 
 .user-box{
-width:100%;
-margin-top:15px;
-flex-direction:column;
+display:none;
 }
 
-input,
-select{
-width:100%;
+#liveTimer{
+font-size:2.8rem;
 }
 
-.seat{
-height:75px;
+.seats{
+grid-template-columns:repeat(2,1fr);
 }
 
 }
@@ -405,34 +539,24 @@ height:75px;
 </head>
 <body>
 
-<!-- LOADER -->
+<div class="bg"></div>
+<div class="particles"></div>
 
 <div id="loader">
-
 <h1>🎬 MIRA Y APRENDE</h1>
-
-<p>♻ Cargando experiencia cinematográfica...</p>
-
+<p>♻ Preparando experiencia cinematográfica...</p>
 </div>
-
-<!-- WHATSAPP -->
 
 <a
 class="whatsapp"
 href="https://wa.me/51989960087"
 target="_blank">
-
 📱 ¿Necesitas ayuda?
-
 </a>
-
-<!-- ADMIN -->
 
 <button id="adminBtn">
 👑 Admin
 </button>
-
-<!-- HEADER -->
 
 <header>
 
@@ -466,8 +590,6 @@ Tu grado
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
 
 <div class="hero-content">
@@ -477,26 +599,59 @@ Tu grado
 </h1>
 
 <p>
-♻ Vive una experiencia escolar inolvidable
+♻ Recicla botellas, gana premios y vive el mejor cine escolar.
 </p>
 
+<div class="hero-buttons">
+
 <button
-class="main-btn"
+class="primary-btn"
 onclick="scrollMovies()">
 
-Ver cartelera
+🍿 Ver cartelera
+
+</button>
+
+<button
+class="secondary-btn">
+
+🏆 Competencia escolar
 
 </button>
 
 </div>
 
+</div>
+
 </section>
 
-<!-- TIMER -->
+<section class="stats">
 
-<section class="timer-section">
+<div class="card">
+<h2 id="totalBottles">0</h2>
+<p>♻ Botellas recicladas</p>
+</div>
 
-<h2>⏳ Próxima función en:</h2>
+<div class="card">
+<h2 id="totalSeats">0</h2>
+<p>🪑 Asientos reservados</p>
+</div>
+
+<div class="card">
+<h2 id="onlineUsers">0</h2>
+<p>👥 Usuarios conectados</p>
+</div>
+
+<div class="card">
+<h2 id="rankingTop">---</h2>
+<p>🏆 Curso líder</p>
+</div>
+
+</section>
+
+<section class="timer">
+
+<h2>⏳ Próxima función</h2>
 
 <div id="liveTimer">
 00:00:00
@@ -504,103 +659,53 @@ Ver cartelera
 
 </section>
 
-<!-- PANELS -->
-
-<div class="side-panels">
-
-<div class="panel">
-
-<h3>📊 Estadísticas</h3>
-
-<p id="totalBottles">♻ Botellas: 0</p>
-
-<p id="totalSeats">🪑 Asientos: 0</p>
-
-<p id="onlineUsers">👥 Usuarios: 0</p>
-
-</div>
-
-<div class="panel">
-
-<h3>🏆 Ranking</h3>
-
-<div id="rankingList">
-
-<p>🥇 Sin datos</p>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- MOVIES -->
-
 <section class="movies" id="movies">
 
-<h2>🍿 Cartelera</h2>
+<h2 class="section-title">
+🍿 Cartelera
+</h2>
 
 <div class="movie-grid" id="movieGrid"></div>
 
 </section>
 
-<!-- COMBOS -->
-
 <section class="combos">
 
-<h2>🍿 Combos</h2>
+<h2 class="section-title">
+🥤 Combos
+</h2>
 
 <div class="combo-grid">
 
 <div class="combo">
-
 <img src="https://cdn-icons-png.flaticon.com/512/2515/2515183.png">
-
 <h3>Cancha Salada</h3>
-
 <p>S/5</p>
-
 </div>
 
 <div class="combo">
-
 <img src="https://cdn-icons-png.flaticon.com/512/3081/3081986.png">
-
 <h3>Cancha Dulce</h3>
-
 <p>S/6</p>
-
 </div>
 
 <div class="combo">
-
 <img src="https://cdn-icons-png.flaticon.com/512/2405/2405479.png">
-
 <h3>Gaseosa</h3>
-
 <p>S/6</p>
-
 </div>
 
 <div class="combo">
-
 <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
-
 <h3>Mixto</h3>
-
 <p>S/9</p>
-
 </div>
 
 </div>
 
 </section>
 
-<!-- RESERVE -->
-
 <section class="reserve" id="reserve"></section>
-
-<!-- FIREBASE -->
 
 <script type="module">
 
@@ -616,7 +721,7 @@ getDocs,
 onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-/* FIREBASE CONFIG */
+/* FIREBASE */
 
 const firebaseConfig = {
   apiKey: "AIzaSyAg_v6kN6ZTWXQ-HSMD2aV7bQuh3SNplcs",
@@ -627,11 +732,8 @@ const firebaseConfig = {
   appId: "1:1085961832739:web:da32eacb00fbe8c4a5a496"
 };
 
-const app =
-initializeApp(firebaseConfig);
-
-const db =
-getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 /* MOVIES */
 
@@ -641,7 +743,7 @@ const movies = [
 id:"mario",
 title:"🍄 Super Mario",
 genre:"Familiar",
-desc:"Animación épica",
+desc:"La aventura más divertida del reino.",
 image:"https://m.media-amazon.com/images/S/pv-target-images/763db971dde3179cd23c0b16a7b9ee93314c35be4dd2e1a8372afa52178779f8.jpg",
 times:["2:00 PM","4:00 PM"]
 },
@@ -650,7 +752,7 @@ times:["2:00 PM","4:00 PM"]
 id:"terror",
 title:"😱 La Momia",
 genre:"Terror",
-desc:"Solo secundaria",
+desc:"Solo para secundaria.",
 image:"https://sacnkprodpecms.blob.core.windows.net/content/posters/HO00008859.jpg",
 times:["3:00 PM","6:00 PM"],
 terror:true
@@ -660,7 +762,7 @@ terror:true
 id:"music",
 title:"🎤 Michael",
 genre:"Drama",
-desc:"Biográfica",
+desc:"Historia inspiradora.",
 image:"https://m.media-amazon.com/images/M/MV5BNzllNmRlN2EtMDQyOC00ODJjLTg4OWQtZDNmNGU3YzlkNjc1XkEyXkFqcGc@._V1_.jpg",
 times:["1:00 PM","5:00 PM"]
 }
@@ -692,6 +794,10 @@ movieGrid.innerHTML += `
 
 <div class="movie-content">
 
+<div class="tag">
+${movie.genre}
+</div>
+
 <h3>${movie.title}</h3>
 
 <p>${movie.desc}</p>
@@ -699,7 +805,7 @@ movieGrid.innerHTML += `
 <button
 onclick="window.openMovie('${movie.id}')">
 
-Comprar entrada
+🎟 Comprar entrada
 
 </button>
 
@@ -723,7 +829,7 @@ behavior:"smooth"
 
 };
 
-/* OPEN MOVIE */
+/* OPEN */
 
 window.openMovie = (id)=>{
 
@@ -786,6 +892,10 @@ ${time}
 
 });
 
+reserve.scrollIntoView({
+behavior:"smooth"
+});
+
 };
 
 /* SHOW SEATS */
@@ -817,7 +927,7 @@ document
 .innerHTML = `
 
 <div class="screen">
-PANTALLA
+🎬 PANTALLA
 </div>
 
 <div class="seats">
@@ -841,7 +951,7 @@ ${seat}
 class="reserve-btn"
 onclick="window.confirmReserve('${movieId}','${time}')">
 
-Confirmar compra
+✅ Confirmar compra
 
 </button>
 
@@ -903,7 +1013,7 @@ success.className =
 "success";
 
 success.innerHTML =
-"✅ Reserva enviada";
+"✅ Reserva enviada al administrador";
 
 document.body.appendChild(success);
 
@@ -969,36 +1079,28 @@ ranking[data.grade] =
 document
 .getElementById("totalBottles")
 .innerHTML =
-`♻ Botellas: ${bottles}`;
+bottles;
 
 document
 .getElementById("totalSeats")
 .innerHTML =
-`🪑 Asientos: ${seatsCount}`;
+seatsCount;
 
 document
 .getElementById("onlineUsers")
 .innerHTML =
-`👥 Usuarios: ${snapshot.size}`;
+snapshot.size;
 
 const sorted =
 Object.entries(ranking)
 .sort((a,b)=>b[1]-a[1]);
 
 document
-.getElementById("rankingList")
+.getElementById("rankingTop")
 .innerHTML =
-sorted.map((item,index)=>`
-
-<p>
-
-${index+1}️⃣
-${item[0]}
-→ ${item[1]}♻
-
-</p>
-
-`).join("");
+sorted[0]
+? sorted[0][0]
+: "---";
 
 });
 
